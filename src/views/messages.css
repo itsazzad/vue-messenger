@@ -1,0 +1,30 @@
+.message{
+  float: left;
+  display: block;
+  clear: both;
+  width: 100%;
+  border-bottom: 1px dashed #428bca;
+}
+.message.from{
+  background: #f5f5f5;
+  text-align: left;
+}
+.message.to{
+  background: #dddddd;
+  text-align: right;
+}
+.message p{
+  clear: both;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  text-align: center;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}

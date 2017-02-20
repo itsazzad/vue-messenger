@@ -1,59 +1,51 @@
 import './Hello.css';
+import { connect } from 'redux-vue';
 
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+const Hello = {
+  props: {
+    todos: {
+      type: Array,
+    },
+    addTodo: {
+      type: Function,
+    },
+  },
+
+  methods: {
+    handleAddTodo() {
+      const todo = this.$refs.input.value;
+      this.addTodo(todo);
     }
   },
   render(h) {
-    return (
-      <div class="hello">
-        <h1>{this.msg}</h1>
-        <h2>Essential Links</h2>
-        <ul>
-          <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-          <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-          <li>
-            <a href="https://gitter.im/vuejs/vue" target="_blank">
-              Gitter Chat
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/vuejs" target="_blank">Twitter</a>
-          </li>
-          <br />
-          <li>
-            <a
-              href="http://vuejs-templates.github.io/webpack/"
-              target="_blank">
-              Docs for This Template
-            </a>
-          </li>
-        </ul>
-        <h2>Ecosystem</h2>
-        <ul>
-          <li>
-            <a href="http://router.vuejs.org/" target="_blank">vue-router</a>
-          </li>
-          <li><a href="https://github.com/nadimtuhin/redux-vue" target="_blank">redux vue</a></li>
-          <li>
-            <a
-              href="http://vue-loader.vuejs.org/"
-              target="_blank">
-              vue-loader
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/vuejs/awesome-vue"
-              target="_blank">
-              awesome-vue
-            </a>
-          </li>
-        </ul>
+    return <div>
+      <ul>
+        {this.todos.map(todo => <li>{todo}</li>)}
+      </ul>
+
+      <div>
+        <input type="text" ref="input" />
+        <button on-click={this.handleAddTodo}>add todo</button>
       </div>
-    );
+    </div>
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    todos: state.todos
+  };
+}
+
+function mapActionToProps(dispatch) {
+  return {
+    addTodo(todo) {
+      dispatch({
+        type: 'ADD_TODO',
+        payload: { todo }
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Hello);
