@@ -5,6 +5,7 @@ const LeftSidebar = {
   name: 'left-sidebar',
   props: {
     users: {
+      required: true,
       type: Array,
     }
   },

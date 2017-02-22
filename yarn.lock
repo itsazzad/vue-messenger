@@ -4613,6 +4613,10 @@ redux:
     loose-envify "^1.1.0"
     symbol-observable "^1.0.2"
 
+redux-devtools-extension@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.0.tgz#c8300d72630c00999302526204d47c360cc0637f"
+
 redux-vue:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/redux-vue/-/redux-vue-0.7.1.tgz#718e91a631f06943af10c5f778563ea6249b05b5"

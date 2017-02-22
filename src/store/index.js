@@ -1,6 +1,10 @@
 import { createStore } from 'redux';
-import {user as profile, message} from '../modules/lorem'
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
+import {profile, message} from '../modules/lorem'
 import {getRandomIntInclusive} from '../modules/random'
+
+var moment = require('moment');
 
 const initialState = {
   todos: [],
@@ -24,16 +28,26 @@ const reducer = (state = initialState, action) => {
       };
 
     case 'SEND_MESSAGE':
-      state.users[action.payload.userIndex].messages.push(action.payload.message);
-      return state;
+      let message = message();
+      message.created_time = moment();
+      message.direction = 'to';
+      message.message = action.message;
+      // state.users[action.userIndex].messages.push(message);
+      return state.users((user, index) => {
+        if (index === action.index) {
+          return Object.assign(user.messages, message);
+          // return user.messages.push(message);
+        }
+        return user;
+      });
 
     default:
       return state;
   }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, /* preloadedState, */ devToolsEnhancer(
+  // Specify here name, actionsBlacklist, actionsCreators and other options if needed
+));
 
 export default store;
-
-window.store = store;

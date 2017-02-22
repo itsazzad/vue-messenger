@@ -3,7 +3,7 @@ export default {
   render(h) {
     return (
       <div class="col-sm-6 col-sm-offset-3 main">
-        <router-view></router-view>
+        <router-view class="view messages"></router-view>
       </div>
     );
   }

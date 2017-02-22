@@ -3,28 +3,79 @@
   display: block;
   clear: both;
   width: 100%;
-  border-bottom: 1px dashed #428bca;
+  /*border-bottom: 1px dashed #428bca;*/
+  padding: 5px;
+  border-radius: 2%;
 }
 .message.from{
-  background: #f5f5f5;
-  text-align: left;
 }
 .message.to{
-  background: #dddddd;
-  text-align: right;
 }
 .message p{
   clear: both;
+}
+.message-text{
+  text-align: left;
+  padding: 6px 12px;
+}
+.message.from .message-text{
+  border-top-left-radius: 1.3em;
+  border-top-right-radius: 1.3em;
+  border-bottom-left-radius: 1.3em;
+  color: rgba(0, 0, 0, 1);
+  background: #f1f0f0;
+  float: left;
+}
+.message.to .message-text{
+  border-top-left-radius: 1.3em;
+  border-top-right-radius: 1.3em;
+  border-bottom-left-radius: 1.3em;
+  color: white;
+  background: rgb(250, 60, 76);
+  float: right;
 }
 
 /*
  * Placeholder dashboard ideas
  */
-
 .placeholders {
-  text-align: center;
+  text-align: left;
 }
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+.send-message{
+  background-color: rgb(118, 70, 255);
+  padding: 5px;
+  border-top-right-radius: 5%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 15%;
+}
+.send-message .textarea{
+  margin: 0 auto;
+  width: 100%;
+  border-top-left-radius: 1%;
+  border-top-right-radius: 2%;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 4%;
+  min-height: 75px;
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+
+  padding: 5px;
+  text-align: left;
+  background: white;
+
+}
+.send-message .col{
+  padding: 0;
+  padding-bottom: 10px;
 }

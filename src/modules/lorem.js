@@ -14,7 +14,7 @@ const loremTypes = [
   'lines'
 ];
 
-export function user() {
+export function profile() {
   let loremType = loremTypes[getRandomIntInclusive(0, loremTypes.length - 1)];
   let name = faker.name.lastName() + ' ' + faker.name.firstName() + ' ' + faker.name.suffix();
   let about = faker.lorem[loremType]();

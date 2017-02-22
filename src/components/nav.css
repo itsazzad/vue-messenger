@@ -39,3 +39,8 @@
   color: #fff;
   background-color: #428bca;
 }
+
+.router-link-active{
+  font-style: oblique;
+  font-weight: bold;
+}
