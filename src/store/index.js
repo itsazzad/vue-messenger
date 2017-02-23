@@ -28,18 +28,12 @@ const reducer = (state = initialState, action) => {
       };
 
     case 'SEND_MESSAGE':
-      let message = message();
-      message.created_time = moment();
-      message.direction = 'to';
-      message.message = action.message;
-      // state.users[action.userIndex].messages.push(message);
-      return state.users((user, index) => {
-        if (index === action.index) {
-          return Object.assign(user.messages, message);
-          // return user.messages.push(message);
-        }
-        return user;
-      });
+      let msg = message();
+      msg.created_time = moment();
+      msg.direction = 'to';
+      msg.message = action.message;
+      state.users[action.index].messages.push(msg);
+      return state;
 
     default:
       return state;

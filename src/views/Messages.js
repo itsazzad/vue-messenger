@@ -1,10 +1,10 @@
 import {connect} from 'redux-vue';
-import {getUserById, messagesSortedByTime} from '../modules/active-profile'
-var moment = require('moment');
+import {userIndex, getUserById, messagesSortedByTime} from '../modules/active-profile'
+const moment = require('moment');
 import './messages.css';
-import {sendMessage} from '../actions'
+// import {sendMessage as sendMessageAction} from '../actions'
 
-var keyCodeShiftKey = {
+const keyCodeShiftKey = {
   keyCode: false,
   shiftKey: false,
 };
@@ -12,25 +12,21 @@ var keyCodeShiftKey = {
 document.addEventListener('keyup', (event) => {
   if (event.keyCode == 13) {
     keyCodeShiftKey.keyCode = true;
-    if (event.shiftKey) {
-      keyCodeShiftKey.shiftKey = true;
-    } else {
-      keyCodeShiftKey.shiftKey = false;
-    }
+    keyCodeShiftKey.shiftKey = Boolean(event.shiftKey);
   } else {
-    keyCodeShiftKey = {
-      keyCode: false,
-      shiftKey: false,
-    }
+    keyCodeShiftKey.keyCode = false;
+    keyCodeShiftKey.shiftKey = false;
   }
 }, false);
 
-
 const Messages = {
-  name: 'left-sidebar',
+  name: 'messages',
   props: {
     users: {
-      type: Array,
+      type: Array
+    },
+    sendMessage: {
+      type: Function
     }
   },
   computed: {
@@ -42,18 +38,16 @@ const Messages = {
   },
   methods: {
     handleChange(e) {
+      const parent = this;
       setTimeout(function () {
         if (keyCodeShiftKey.keyCode && keyCodeShiftKey.shiftKey) {
           if (!e.target.innerText.trim()) {
             return
           }
-          dispatch(sendMessage(e.target.innerText.trim()));
-          e.target.innerText = ''
-        } else {
-          // console.log('Typing...');
+          parent.sendMessage(e.target.innerText.trim());
+          e.target.innerText = '';
         }
       }, 100);
-
     }
   },
   render(h) {
@@ -94,5 +88,16 @@ function mapStateToProps(state) {
     users: state.users
   };
 }
+function mapActionToProps(dispatch) {
+  return {
+    sendMessage(message) {
+      dispatch({
+        type: 'SEND_MESSAGE',
+        index: userIndex,
+        message: message
+      })
+    }
+  }
+}
 
-export default connect(mapStateToProps)(Messages);
+export default connect(mapStateToProps, mapActionToProps)(Messages);
