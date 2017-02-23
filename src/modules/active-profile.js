@@ -1,5 +1,5 @@
 const moment = require('moment');
-let userIndex;
+let userIndex = 0;
 export function getUserById(users, activeId) {
   return users.filter((user, index) => {
     if (user.profile.id == activeId) {

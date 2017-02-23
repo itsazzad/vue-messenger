@@ -17,6 +17,8 @@
 .message-text{
   text-align: left;
   padding: 6px 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 .message.from .message-text{
   border-top-left-radius: 1.3em;
