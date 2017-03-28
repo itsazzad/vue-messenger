@@ -23,7 +23,8 @@ const reducer = (state = initialState, action) => {
     case 'SEND_MESSAGE':
       let msg = message();
       msg.created_time = moment();
-      msg.direction = 'to';
+      //msg.direction = 'to';
+      msg.direction = ['to', 'from'][Math.floor(Math.random()*2)];
       msg.message = action.message;
       state.users[action.index].messages.push(msg);
       return state;
