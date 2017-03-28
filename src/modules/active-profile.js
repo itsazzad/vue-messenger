@@ -10,7 +10,9 @@ export function getUserById(users, activeId) {
     }
   });
 }
+
 export {userIndex};
+
 export function messagesSortedByTime(messages) {
   return messages.sort(function (a, b) {
     let aC = moment(a.created_time);

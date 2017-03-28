@@ -12,8 +12,8 @@ const App = {
   name: 'app',
   render(h) {
     return (
-      <div class="container">
-        <div id="app" class="row">
+      <div className="container">
+        <div id="app" className="row">
           <LeftSidebar />
           <Main />
           <RightSidebar />
@@ -21,7 +21,7 @@ const App = {
       </div>
     );
   }
-}
+};
 
 function mapStateToProps(state) {
   return {
@@ -29,15 +29,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapActionToProps(dispatch) {
-  return {
-    sendMessage(message) {
-      dispatch({
-        type: 'SEND_MESSAGE',
-        payload: { message }
-      })
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapActionToProps)(App);
+export default connect(mapStateToProps)(App);

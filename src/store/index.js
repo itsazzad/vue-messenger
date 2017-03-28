@@ -7,7 +7,6 @@ import {getRandomIntInclusive} from '../modules/random'
 var moment = require('moment');
 
 const initialState = {
-  todos: [],
   users: []
 };
 
@@ -21,12 +20,6 @@ for (let u = 0; u < getRandomIntInclusive(1, 10); u++) {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
-      return {
-        ...state,
-        todos: [...state.todos, action.payload.todo]
-      };
-
     case 'SEND_MESSAGE':
       let msg = message();
       msg.created_time = moment();
@@ -40,8 +33,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer, /* preloadedState, */ devToolsEnhancer(
-  // Specify here name, actionsBlacklist, actionsCreators and other options if needed
-));
+const store = createStore(reducer);
 
 export default store;
