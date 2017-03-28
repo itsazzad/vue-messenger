@@ -1,10 +1,9 @@
 import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import {profile, message} from '../modules/lorem'
 import {getRandomIntInclusive} from '../modules/random'
 
-var moment = require('moment');
+const moment = require('moment');
 
 const initialState = {
   users: []
