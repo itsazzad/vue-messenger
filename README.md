@@ -1,4 +1,4 @@
-# redux-vue-jsx-boilerplate
+# Simple fake messenger using redux-vue-jsx-boilerplate 
 
 > A Vue.js project
 
