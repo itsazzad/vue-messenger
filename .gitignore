@@ -6,3 +6,6 @@ test/unit/coverage
 test/e2e/reports
 selenium-debug.log
 .idea/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
